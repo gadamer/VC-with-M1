@@ -1,8 +1,8 @@
-// Header component with dark blue theme navigation and auth buttons
+// Header component with community link in navigation
 import React, { useState } from 'react'
 import { supabase, isConfigured } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
-import { LogOut, User } from 'lucide-react'
+import { LogOut, User, ExternalLink } from 'lucide-react'
 
 export default function Header({ onAuthClick, onCourseClick }) {
   const { user } = useAuth()
@@ -14,6 +14,11 @@ export default function Header({ onAuthClick, onCourseClick }) {
       await supabase.auth.signOut()
     }
     setShowUserMenu(false)
+  }
+
+  // Handle community link
+  const handleCommunityClick = () => {
+    window.open('https://www.xbesh.community', '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -34,6 +39,13 @@ export default function Header({ onAuthClick, onCourseClick }) {
               className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
             >
               Course
+            </button>
+            <button
+              onClick={handleCommunityClick}
+              className="flex items-center space-x-1 text-gray-300 hover:text-blue-400 transition-colors duration-300"
+            >
+              <span>Community</span>
+              <ExternalLink size={14} />
             </button>
             <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
               About

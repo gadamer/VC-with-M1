@@ -1,10 +1,15 @@
-// Hero section with proper course access flow
+// Hero section with better coding image and fixed Milo styling
 import React from 'react'
-import { Play, Code, Zap, User, Sparkles } from 'lucide-react'
+import { Play, Code, Zap, ExternalLink, Sparkles } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 
 export default function Hero({ onCourseClick, onAuthClick }) {
   const { user } = useAuth()
+
+  // Handle community link
+  const handleCommunityClick = () => {
+    window.open('https://www.xbesh.community', '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -23,10 +28,10 @@ export default function Hero({ onCourseClick, onAuthClick }) {
               <span className="text-sm text-gray-300">Transform Your Future</span>
             </div>
 
-            {/* Main headline with gradient */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            {/* Main headline with gradient - Fixed Milo styling */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="text-white">Vibe Coding with </span>
-              <span className="gradient-text animate-glow">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                 Milo
               </span>
             </h1>
@@ -52,10 +57,10 @@ export default function Hero({ onCourseClick, onAuthClick }) {
               </button>
               
               <button
-                onClick={onAuthClick}
+                onClick={handleCommunityClick}
                 className="flex items-center space-x-2 glass-effect text-white px-8 py-4 rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20"
               >
-                <User size={20} />
+                <ExternalLink size={20} />
                 <span className="font-semibold">Join Community</span>
               </button>
             </div>
@@ -95,15 +100,16 @@ export default function Hero({ onCourseClick, onAuthClick }) {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border border-white/10">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 z-10"></div>
                 <img
-                  src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                  alt="Young woman working on laptop in her home office"
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  alt="Young woman coding on laptop"
                   className="w-full h-[500px] object-cover"
                   onError={(e) => {
-                    // Fallback images if the first one fails
+                    // High-quality fallback images of women coding on laptops
                     const fallbacks = [
-                      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                      "https://images.unsplash.com/photo-1607706189992-eae578626c86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                     ];
                     
                     const currentIndex = fallbacks.indexOf(e.target.src);
