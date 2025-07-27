@@ -1,4 +1,4 @@
-// Hero section with better coding image and fixed Milo styling
+// Hero section with clean image without animation overlays
 import React from 'react'
 import { Play, Code, Zap, ExternalLink, Sparkles } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
@@ -93,23 +93,23 @@ export default function Hero({ onCourseClick, onAuthClick }) {
             </div>
           </div>
 
-          {/* Right side - Hero Image */}
+          {/* Right side - Hero Image - Clean without overlays */}
           <div className="relative">
             <div className="relative z-10">
-              {/* Main image container with glow effect */}
+              {/* Main image container - removed all floating elements */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 border border-white/10">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 z-10"></div>
                 <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                  alt="Young woman coding on laptop"
+                  src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1000&dpr=1"
+                  alt="Woman coding on computer"
                   className="w-full h-[500px] object-cover"
                   onError={(e) => {
-                    // High-quality fallback images of women coding on laptops
+                    // Fallback to direct Pexels CDN URLs
                     const fallbacks = [
-                      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                      "https://images.unsplash.com/photo-1607706189992-eae578626c86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                      "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
+                      "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800",
+                      "https://images.unsplash.com/photo-1494790108755-2616c9c0e8e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                     ];
                     
                     const currentIndex = fallbacks.indexOf(e.target.src);
@@ -118,20 +118,6 @@ export default function Hero({ onCourseClick, onAuthClick }) {
                     }
                   }}
                 />
-                
-                {/* Floating code elements */}
-                <div className="absolute top-4 right-4 glass-effect px-3 py-2 rounded-lg animate-float">
-                  <code className="text-blue-400 text-sm">{'<Hello />'}</code>
-                </div>
-                <div className="absolute bottom-4 left-4 glass-effect px-3 py-2 rounded-lg animate-float" style={{animationDelay: '1s'}}>
-                  <code className="text-purple-400 text-sm">console.log('✨')</code>
-                </div>
-                <div className="absolute top-1/2 left-4 glass-effect px-3 py-2 rounded-lg animate-float" style={{animationDelay: '0.5s'}}>
-                  <code className="text-blue-300 text-sm">{'{ coding: true }'}</code>
-                </div>
-                <div className="absolute top-1/3 right-6 glass-effect px-2 py-1 rounded-md animate-float" style={{animationDelay: '1.5s'}}>
-                  <code className="text-purple-300 text-xs">npm start</code>
-                </div>
               </div>
             </div>
 
