@@ -1,4 +1,4 @@
-// Header component with dark theme navigation and auth buttons
+// Header component with dark blue theme navigation and auth buttons
 import React, { useState } from 'react'
 import { supabase, isConfigured } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
@@ -22,7 +22,7 @@ export default function Header({ onAuthClick, onCourseClick }) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold gradient-text">
               Vibe Coding
             </h1>
           </div>
@@ -31,14 +31,14 @@ export default function Header({ onAuthClick, onCourseClick }) {
           <nav className="hidden md:flex space-x-8">
             <button
               onClick={onCourseClick}
-              className="text-gray-300 hover:text-primary-400 transition-colors duration-300"
+              className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
             >
               Course
             </button>
-            <a href="#about" className="text-gray-300 hover:text-primary-400 transition-colors duration-300">
+            <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
               About
             </a>
-            <a href="#contact" className="text-gray-300 hover:text-primary-400 transition-colors duration-300">
+            <a href="#contact" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
               Contact
             </a>
           </nav>
@@ -49,7 +49,7 @@ export default function Header({ onAuthClick, onCourseClick }) {
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="flex items-center space-x-2 text-gray-300 hover:text-primary-400 transition-colors duration-300"
+                  className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"
                 >
                   <User size={20} />
                   <span className="hidden sm:block">{user.email}</span>
@@ -71,7 +71,7 @@ export default function Header({ onAuthClick, onCourseClick }) {
             ) : (
               <button
                 onClick={onAuthClick}
-                className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-2 rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all duration-300 transform hover:scale-105 glow-effect"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 glow-effect"
               >
                 Sign In
               </button>

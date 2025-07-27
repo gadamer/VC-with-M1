@@ -1,4 +1,4 @@
-// Dark themed authentication modal
+// Dark blue themed authentication modal
 import React, { useState } from 'react'
 import { supabase, isConfigured } from '../lib/supabase'
 import Modal from './Modal'
@@ -62,7 +62,11 @@ export default function AuthModal({ isOpen, onClose }) {
     <Modal 
       isOpen={isOpen} 
       onClose={onClose} 
-      title={isLogin ? 'Welcome Back' : 'Create Account'}
+      title={
+        <span className="gradient-text">
+          {isLogin ? 'Welcome Back' : 'Create Account'}
+        </span>
+      }
     >
       {!isConfigured && (
         <div className="mb-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
@@ -85,7 +89,7 @@ export default function AuthModal({ isOpen, onClose }) {
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={!isConfigured}
-            className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-800 disabled:cursor-not-allowed text-white placeholder-gray-400 transition-all duration-300"
+            className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-800 disabled:cursor-not-allowed text-white placeholder-gray-400 transition-all duration-300"
             placeholder="Enter your email"
           />
         </div>
@@ -103,7 +107,7 @@ export default function AuthModal({ isOpen, onClose }) {
             required
             minLength={6}
             disabled={!isConfigured}
-            className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-800 disabled:cursor-not-allowed text-white placeholder-gray-400 transition-all duration-300"
+            className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-800 disabled:cursor-not-allowed text-white placeholder-gray-400 transition-all duration-300"
             placeholder="Enter your password"
           />
         </div>
@@ -119,7 +123,7 @@ export default function AuthModal({ isOpen, onClose }) {
         <button
           type="submit"
           disabled={loading || !isConfigured}
-          className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-2 px-4 rounded-lg hover:from-primary-700 hover:to-primary-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
+          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
         >
           {loading ? 'Loading...' : (isLogin ? 'Sign In' : 'Sign Up')}
         </button>
@@ -130,7 +134,7 @@ export default function AuthModal({ isOpen, onClose }) {
             type="button"
             onClick={toggleMode}
             disabled={!isConfigured}
-            className="text-primary-400 hover:text-primary-300 text-sm disabled:text-gray-500 disabled:cursor-not-allowed transition-colors duration-300"
+            className="text-blue-400 hover:text-blue-300 text-sm disabled:text-gray-500 disabled:cursor-not-allowed transition-colors duration-300"
           >
             {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
           </button>
