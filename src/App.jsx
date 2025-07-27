@@ -1,4 +1,4 @@
-// Main App component with dark blue theme
+// Main App component with fixed course access logic
 import React, { useState } from 'react'
 import { useAuth } from './hooks/useAuth'
 import Header from './components/Header'
@@ -12,18 +12,29 @@ export default function App() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showCourseModal, setShowCourseModal] = useState(false)
 
-  // Handle course access - require authentication
+  // Handle course access - open course modal if signed in, otherwise show auth modal
   const handleCourseClick = () => {
     if (user) {
+      // User is signed in - open course modal directly
       setShowCourseModal(true)
     } else {
+      // User not signed in - show auth modal first
       setShowAuthModal(true)
     }
   }
 
-  // Handle authentication modal
+  // Handle authentication modal - separate from course access
   const handleAuthClick = () => {
     setShowAuthModal(true)
+  }
+
+  // Handle successful authentication - close auth modal and open course
+  const handleAuthSuccess = () => {
+    setShowAuthModal(false)
+    // Small delay to ensure smooth transition
+    setTimeout(() => {
+      setShowCourseModal(true)
+    }, 300)
   }
 
   // Show loading state while checking authentication
@@ -61,6 +72,7 @@ export default function App() {
       <AuthModal 
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
+        onSuccess={handleAuthSuccess}
       />
       
       <CourseModal 

@@ -1,8 +1,11 @@
-// Hero section with dark blue theme and young woman in home office image
+// Hero section with proper course access flow
 import React from 'react'
 import { Play, Code, Zap, User, Sparkles } from 'lucide-react'
+import { useAuth } from '../hooks/useAuth'
 
 export default function Hero({ onCourseClick, onAuthClick }) {
+  const { user } = useAuth()
+
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background effects */}
@@ -43,7 +46,9 @@ export default function Hero({ onCourseClick, onAuthClick }) {
                 className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-2xl glow-effect"
               >
                 <Play size={20} />
-                <span className="font-semibold">Start Learning</span>
+                <span className="font-semibold">
+                  {user ? 'Continue Learning' : 'Start Learning'}
+                </span>
               </button>
               
               <button

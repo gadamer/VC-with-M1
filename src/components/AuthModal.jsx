@@ -1,9 +1,9 @@
-// Dark blue themed authentication modal
+// Authentication modal with success callback
 import React, { useState } from 'react'
 import { supabase, isConfigured } from '../lib/supabase'
 import Modal from './Modal'
 
-export default function AuthModal({ isOpen, onClose }) {
+export default function AuthModal({ isOpen, onClose, onSuccess }) {
   const [isLogin, setIsLogin] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -39,10 +39,17 @@ export default function AuthModal({ isOpen, onClose }) {
         if (error) throw error
       }
       
-      // Close modal on success
-      onClose()
+      // Clear form
       setEmail('')
       setPassword('')
+      
+      // Call success callback if provided (for course access flow)
+      if (onSuccess) {
+        onSuccess()
+      } else {
+        // Otherwise just close modal
+        onClose()
+      }
     } catch (error) {
       setError(error.message)
     } finally {
